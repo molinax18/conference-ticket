@@ -1,5 +1,7 @@
+import Background from "./components/Background";
+
 const App = () => {
-  return <div>¡Hola!</div>;
+  return <Background />;
 };
 
 export default App;

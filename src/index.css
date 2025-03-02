@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 @import "tailwindcss";
 
-@themes static {
+@theme static {
   /* Color */
   --color-neutral-0: hsl(0, 0%, 100%);
   --color-neutral-300: hsl(252, 6%, 83%);
@@ -14,4 +14,10 @@
 
   /* Font */
   --font-inconsolata: "Inconsolata", serif;
+}
+
+@layer base {
+  html {
+    @apply font-inconsolata;
+  }
 }
