@@ -1,0 +1,13 @@
+@theme {
+  /* Pattern sizes */
+      /* Width */
+  --spacing-squiggly-line-bottom-mobile-width: 24rem;
+  --spacing-squiggly-line-bottom-sm-width: 32rem;
+  --spacing-squiggly-line-bottom-lg-width: 44rem;
+  --spacing-squiggly-line-bottom-xl-width: 52rem;
+    /* Height */
+  --spacing-squiggly-line-bottom-mobile-height: 16rem;
+  --spacing-squiggly-line-bottom-sm-height: 22rem;
+  --spacing-squiggly-line-bottom-lg-height: 24rem;
+  --spacing-squiggly-line-bottom-xl-height: 28rem;
+}

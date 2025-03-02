@@ -1,4 +1,4 @@
-import { beforeSquigglyLineBottomStyles } from "../constants/patterns/squigglyLineBottom";
+import { beforeSquigglyLineBottomStyles } from "../variable-styles/patterns/squigglyLineBottom";
 
 const Background = () => {
   const bgImages = {
@@ -8,9 +8,9 @@ const Background = () => {
   };
 
   return (
-    <div className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} bg-cover bg-center min-h-dvh ${beforeSquigglyLineBottomStyles}`}
+    <div className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} bg-cover bg-center min-h-dvh bf-squiggly-line-bottom`}
     ></div>
   );
 };
 
-export default Background;
+export default Background
