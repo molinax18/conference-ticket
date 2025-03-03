@@ -17,10 +17,22 @@
 
   /* Font */
   --font-inconsolata: "Inconsolata", serif;
+
+  /* Sizes */
+  --text-title-size: clamp(1.8rem, 0.633rem + 2.917vw, 2.5rem); 
+  --text-paragraph-size: clamp(1rem, 0.167rem + 2.083vw, 1.5rem); 
 }
 
 @layer base {  
   html {
     @apply font-inconsolata;
   }
+}
+
+@utility title {
+  @apply text-title-size text-neutral-0 font-semibold;
+}
+
+@utility container {
+  @apply max-w-4xl;
 }

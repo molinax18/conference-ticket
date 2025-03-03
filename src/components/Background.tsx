@@ -6,13 +6,13 @@ const Background = () => {
   };
 
   return (
-    <div
-      className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} bg-cover bg-center min-h-dvh z-10`}
-    >
-      <div className="squiggly-line-bottom"></div>
-      <div className="squiggly-line-top"></div>
-      <div className="lines"></div>
-    </div>
+      <div
+        className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} absolute bg-cover bg-center w-screen min-h-dvh -z-10`}
+      >
+        <div className="squiggly-line-bottom"></div>
+        <div className="squiggly-line-top"></div>
+        <div className="lines"></div>
+      </div>
   );
 };
 
