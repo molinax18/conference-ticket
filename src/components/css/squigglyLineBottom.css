@@ -1,0 +1,11 @@
+@theme {
+  --spacing-squiggly-line-bottom-width: 40vw;
+  --spacing-squiggly-line-bottom-height: 28vw;
+
+  --spacing-squiggly-line-bottom-width-lg: 47.5vw;
+  --spacing-squiggly-line-bottom-height-lg: 23vw;
+}
+
+@utility squiggly-line-bottom {
+  @apply bg-[url(pattern/pattern-squiggly-line-bottom-mobile-tablet.svg)] lg:bg-[url(/pattern/pattern-squiggly-line-bottom-desktop.svg)] bg-no-repeat bg-contain bg-center absolute bottom-0 w-squiggly-line-bottom-width h-squiggly-line-bottom-height lg:w-squiggly-line-bottom-width-lg lg:h-squiggly-line-bottom-height-lg opacity-70;
+}

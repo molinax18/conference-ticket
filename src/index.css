@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
-@import "./components/css/variables-css/beforeSquigglyLineBottom.css";
+@import "./components/css/squigglyLineBottom.css";
+@import "./components/css/squigglyLineTop.css";
+@import "./components/css/lines.css";
 @import "tailwindcss";
 
 @theme static {
@@ -20,11 +22,5 @@
 @layer base {  
   html {
     @apply font-inconsolata;
-  }
-}
-
-@layer components {
-  .bf-squiggly-line-bottom {
-    @apply before:bg-[url(pattern/pattern-squiggly-line-bottom-mobile-tablet.svg)] before:lg:bg-[url(/pattern/pattern-squiggly-line-bottom-desktop.svg)] before:bg-cover before:bg-center before:absolute before:bottom-0 before:w-screen before:h-screen before:opacity-50 before:max-w-squiggly-line-bottom-mobile-width sm:before:max-w-squiggly-line-bottom-sm-width lg:before:max-w-squiggly-line-bottom-lg-width xl:before:max-w-squiggly-line-bottom-xl-width before:max-h-squiggly-line-bottom-mobile-height sm:before:max-h-squiggly-line-bottom-sm-height lg:before:max-h-squiggly-line-bottom-lg-height xl:before:max-h-squiggly-line-bottom-xl-height;
   }
 }

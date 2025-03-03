@@ -1,0 +1,8 @@
+@theme {
+  --spacing-lines-width: 100%;
+  --spacing-lines-height: 80%;
+}
+
+@utility lines {
+  @apply bg-[url(pattern/pattern-lines.svg)] bg-cover absolute top-0 right-0 w-lines-width h-lines-height xl:opacity-50;
+}

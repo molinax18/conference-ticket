@@ -1,0 +1,11 @@
+@theme {
+  --spacing-squiggly-line-top-width: 42vw;
+  --spacing-squiggly-line-top-height: 20vw;
+
+  --spacing-squiggly-line-top-max-width: 26rem;
+  --spacing-squiggly-line-top-max-height: 13rem;
+}
+
+@utility squiggly-line-top {
+  @apply bg-[url(pattern/pattern-squiggly-line-top.svg)] bg-no-repeat bg-contain bg-center absolute top-8 right-0 w-squiggly-line-top-width h-squiggly-line-top-height opacity-70 max-w-squiggly-line-top-max-width max-h-squiggly-line-top-max-height;
+}
