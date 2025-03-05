@@ -19,8 +19,8 @@
   --font-inconsolata: "Inconsolata", serif;
 
   /* Sizes */
-  --text-title-size: clamp(1.8rem, 0.633rem + 2.917vw, 2.5rem); 
-  --text-paragraph-size: clamp(1rem, 0.167rem + 2.083vw, 1.5rem); 
+  --text-title-size: clamp(1.8rem, 1.086rem + 1.905vw, 2.8rem); 
+  --text-subtitle-size: clamp(1rem, 0.714rem + 0.762vw, 1.4rem); 
 }
 
 @layer base {  
@@ -34,5 +34,5 @@
 }
 
 @utility container {
-  @apply max-w-4xl;
+  @apply max-w-3xl;
 }

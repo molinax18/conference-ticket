@@ -4,7 +4,7 @@ type Props = {
 
 const Header = ({ children }: Props) => {
   return (
-    <header className="grid justify-items-center text-center gap-y-8">
+    <header className="grid justify-items-center text-center gap-y-4">
       <img src="/logo/logo-full.svg" alt="Coding Conf" />
       {children}
     </header>
