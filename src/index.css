@@ -19,8 +19,8 @@
   --font-inconsolata: "Inconsolata", serif;
 
   /* Sizes */
-  --text-title-size: clamp(1.8rem, 1.086rem + 1.905vw, 2.8rem); 
-  --text-subtitle-size: clamp(1rem, 0.714rem + 0.762vw, 1.4rem); 
+  --text-title-size: clamp(1.8rem, 1.6239rem + 0.7512vw, 2.3rem);
+  --text-subtitle-size: clamp(1rem, 0.9296rem + 0.3005vw, 1.2rem); 
 }
 
 @layer base {  
@@ -33,6 +33,6 @@
   @apply text-title-size text-neutral-0 font-semibold;
 }
 
-@utility container {
-  @apply max-w-3xl;
+@utility input {
+  @apply py-[0.375rem] px-2 rounded-md backdrop-blur-sm bg-gray-500/20 border-[1px] border-neutral-700 outline-neutral-700 outline-offset-3 focus:outline-2 hover:bg-gray-500/40 placeholder:text-neutral-500;
 }

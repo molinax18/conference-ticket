@@ -7,7 +7,7 @@ const Background = () => {
 
   return (
       <div
-        className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} absolute bg-cover bg-center w-screen min-h-dvh -z-10`}
+        className={`${bgImages.mobile} ${bgImages.tablet} ${bgImages.desktop} fixed bg-cover bg-center w-screen min-h-dvh -z-10`}
       >
         <div className="squiggly-line-bottom"></div>
         <div className="squiggly-line-top"></div>

@@ -1,13 +1,26 @@
+import { InputInfo } from "../models/input.interface";
 import { useState } from "react";
-
-interface Input {
-  name: string;
-  value: string;
-}
+import Input from "./ui/Input";
+import Button from "./ui/Button";
 
 const Form = () => {
-  const [fullName, setFullName] = useState<Input>({
+  const [avatar, setAvatar] = useState<InputInfo>({
+    name: "avatar",
+    value: "",
+  });
+
+  const [fullName, setFullName] = useState<InputInfo>({
     name: "fullName",
+    value: "",
+  });
+
+  const [email, setEmail] = useState<InputInfo>({
+    name: "email",
+    value: "",
+  });
+
+  const [gitHub, setGitHub] = useState<InputInfo>({
+    name: "gitHub",
     value: "",
   });
 
@@ -17,14 +30,31 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        name={fullName.name}
-        value={fullName.value}
-        onChange={(e) => setFullName({ ...fullName, value: e.target.value })}
+    <form onSubmit={onSubmit} className="flex flex-col gap-y-6 w-full max-w-xl">
+      <Input info={avatar} setInfo={setAvatar} label="Upload Avatar" />
+
+      <Input
+        info={fullName}
+        setInfo={setFullName}
+        label="Full Name"
+        placeholder="John Doe"
       />
-      <button type="submit">Send</button>
+
+      <Input
+        info={email}
+        setInfo={setEmail}
+        label="Email Address"
+        placeholder="example@email.com"
+      />
+
+      <Input
+        info={gitHub}
+        setInfo={setGitHub}
+        label="GitHub Username"
+        placeholder="@yourusername"
+      />
+
+      <Button type="submit" value="Generate My Ticket" />
     </form>
   );
 };
