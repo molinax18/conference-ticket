@@ -1,5 +1,7 @@
 import { useForm } from "../hooks/useForm";
 import { ITicketForm } from "../models/ticketForm.interface";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 const initialForm: ITicketForm = {
   name: "",
@@ -32,28 +34,28 @@ const TicketForm = () => {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-y-6 w-full max-w-xl">
-      <input
-        type="text"
+      <Input
+        label="Full Name"
         name="name"
         value={form.name}
-        required
         placeholder="John Doe"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
+        errorMessage={errors.name || null}
       />
-      {errors.name && <p>{errors.name}</p>}
-      <input
+
+      <Input
+        label="Email Address"
         type="email"
         name="email"
         value={form.email}
-        required
         placeholder="johndoe@gmail.com"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
+        errorMessage={errors.email || null}
       />
-      {errors.email && <p>{errors.email}</p>}
 
-      <button type="submit">Enviar</button>
+      <Button value="Generate My Ticket" type="submit" />
     </form>
   );
 };

@@ -1,35 +1,50 @@
-import { InputInfo } from "../../models/input.interface";
-
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  inputInfo: InputInfo;
-  handleInputValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errorMessage: string | null;
 }
 
 const Input = ({
-  inputInfo,
-  handleInputValue,
-  type = "text",
   label,
+  name,
+  type = "text",
+  value,
   placeholder,
-  className,
+  required = true,
+  onChange,
+  onBlur,
+  errorMessage,
 }: Props) => {
-  const { name, value } = inputInfo;
+  const errorInput = "text-orange-700 border-orange-700 outline-orange-700";
 
   if (label) {
     return (
       <fieldset className="flex flex-col gap-y-1 group">
-        <label htmlFor={name} id={name}>
-          {label}
-        </label>
+        <div className="flex justify-between">
+          <label
+            htmlFor={name}
+            id={name}
+            className={errorMessage ? errorInput : ""}
+          >
+            {label}
+          </label>
+
+          {errorMessage && <span className={errorInput}>{errorMessage}</span>}
+        </div>
+
         <input
           type={type}
           name={name}
           id={name}
           value={value}
-          onChange={handleInputValue}
+          required={required}
+          onChange={onChange}
+          onBlur={onBlur}
           placeholder={placeholder}
-          className={className ? `${className} input` : "input"}
+          className={`${errorMessage ? errorInput : ""} input`}
         />
       </fieldset>
     );
@@ -41,8 +56,11 @@ const Input = ({
       name={name}
       id={name}
       value={value}
-      onChange={handleInputValue}
-      className={className ? `${className} input` : "input"}
+      required={required}
+      onChange={onChange}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      className={`${errorMessage ? errorInput : ""} input`}
     />
   );
 };
