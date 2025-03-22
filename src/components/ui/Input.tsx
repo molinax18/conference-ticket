@@ -1,26 +1,35 @@
 import { InputInfo } from "../../models/input.interface";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  info: InputInfo;
-  setInfo: (info: InputInfo) => void;
   label?: string;
+  inputInfo: InputInfo;
+  handleInputValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ info, setInfo, type = "text", label, placeholder }: Props) => {
+const Input = ({
+  inputInfo,
+  handleInputValue,
+  type = "text",
+  label,
+  placeholder,
+  className,
+}: Props) => {
+  const { name, value } = inputInfo;
+
   if (label) {
     return (
-      <fieldset className="flex flex-col gap-y-1">
-        <label htmlFor={info.name} id={info.name}>
+      <fieldset className="flex flex-col gap-y-1 group">
+        <label htmlFor={name} id={name}>
           {label}
         </label>
         <input
           type={type}
-          name={info.name}
-          id={info.name}
-          value={info.value}
-          onChange={(e) => setInfo({ ...info, value: e.target.value })}
+          name={name}
+          id={name}
+          value={value}
+          onChange={handleInputValue}
           placeholder={placeholder}
-          className="input"
+          className={className ? `${className} input` : "input"}
         />
       </fieldset>
     );
@@ -29,11 +38,11 @@ const Input = ({ info, setInfo, type = "text", label, placeholder }: Props) => {
   return (
     <input
       type={type}
-      name={info.name}
-      id={info.name}
-      value={info.value}
-      onChange={(e) => setInfo({ ...info, value: e.target.value })}
-      className="input"
+      name={name}
+      id={name}
+      value={value}
+      onChange={handleInputValue}
+      className={className ? `${className} input` : "input"}
     />
   );
 };

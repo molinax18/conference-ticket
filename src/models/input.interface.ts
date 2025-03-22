@@ -1,4 +1,4 @@
 export interface InputInfo {
-  name: string;
+  [index: string]: string;
   value: string;
 }

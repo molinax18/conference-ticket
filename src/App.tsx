@@ -1,5 +1,5 @@
 import Background from "./components/Background";
-import Form from "./components/Form";
+import TicketForm from "./components/TicketForm";
 import Header from "./components/Header";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         </Header>
 
         <section className="place-content-center justify-items-center">
-          <Form />
+          <TicketForm />
         </section>
       </div>
     </>
