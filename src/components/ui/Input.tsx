@@ -1,3 +1,5 @@
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: string;
@@ -23,16 +25,20 @@ const Input = ({
   if (label) {
     return (
       <fieldset className="flex flex-col gap-y-1 group">
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <label
             htmlFor={name}
             id={name}
-            className={errorMessage ? errorInput : ""}
+            className={`${errorMessage && errorInput} flex-1/2`}
           >
             {label}
           </label>
 
-          {errorMessage && <span className={errorInput}>{errorMessage}</span>}
+          {errorMessage && (
+            <span className={`${errorInput} inline-flex items-center gap-x-2 text-sm sm:text-base`}>
+              <AiOutlineInfoCircle /> {errorMessage}
+            </span>
+          )}
         </div>
 
         <input

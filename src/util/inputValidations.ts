@@ -1,0 +1,1 @@
+export const validateInputByRegex = (value: string, regex: RegExp) => regex.test(value.trim());

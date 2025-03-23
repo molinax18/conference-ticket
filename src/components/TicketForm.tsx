@@ -1,28 +1,31 @@
 import { useForm } from "../hooks/useForm";
 import { ITicketForm } from "../models/ticketForm.interface";
+import { validateInputByRegex } from "../util/inputValidations";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 
 const initialForm: ITicketForm = {
   name: "",
   email: "",
+  github: "",
 };
 
 const validateTicketForm = (form: ITicketForm) => {
   const errors: Partial<ITicketForm> = {};
   const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+  const regexGithub = /^@(?!-)[a-zA-Z0-9-]{1,38}(?<!-)$/;
 
-  if (!form.name.trim()) {
-    errors.name = "El campo está vacío";
-  } else if (!regexName.test(form.name.trim())) {
-    errors.name = "Sólo ingrese letras o espacios";
+  if (!validateInputByRegex(form.name, regexName)) {
+    errors.name = "Enter a valid name";
   }
 
-  if (!form.email.trim()) {
-    errors.email = "El campo está vacío";
-  } else if (!regexEmail.test(form.email.trim())) {
-    errors.email = "Ingrese un email válido";
+  if (!validateInputByRegex(form.email, regexEmail)) {
+    errors.email = "Enter a valid email";
+  }
+
+  if (!validateInputByRegex(form.github, regexGithub)) {
+    errors.github = "Enter a valid user";
   }
 
   return errors;
@@ -53,6 +56,16 @@ const TicketForm = () => {
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         errorMessage={errors.email || null}
+      />
+
+      <Input
+        label="GitHub Username"
+        name="github"
+        value={form.github}
+        placeholder="@johndoe-123"
+        onChange={handleInputChange}
+        onBlur={handleInputBlur}
+        errorMessage={errors.github || null}
       />
 
       <Button value="Generate My Ticket" type="submit" />
