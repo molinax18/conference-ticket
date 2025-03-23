@@ -3,8 +3,10 @@ import { ITicketForm } from "../models/ticketForm.interface";
 import { validateInputByRegex } from "../util/inputValidations";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
+import InputFile from "./ui/InputFile";
 
 const initialForm: ITicketForm = {
+  avatar: "",
   name: "",
   email: "",
   github: "",
@@ -37,6 +39,13 @@ const TicketForm = () => {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-y-6 w-full max-w-xl">
+      <InputFile
+        label="Upload Avatar"
+        name="avatar"
+        value={form.avatar}
+        errorMessage={errors.avatar || null}
+      />
+      
       <Input
         label="Full Name"
         name="name"

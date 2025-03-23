@@ -18,9 +18,11 @@ const App = () => {
           </h2>
         </Header>
 
-        <section className="place-content-center justify-items-center">
-          <TicketForm />
-        </section>
+        <main>
+          <section className="place-content-center justify-items-center">
+            <TicketForm />
+          </section>
+        </main>
       </div>
     </>
   );

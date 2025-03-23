@@ -24,7 +24,7 @@ const Input = ({
 
   if (label) {
     return (
-      <fieldset className="flex flex-col gap-y-1 group">
+      <fieldset className="flex flex-col gap-y-1">
         <div className="flex items-center justify-between">
           <label
             htmlFor={name}
