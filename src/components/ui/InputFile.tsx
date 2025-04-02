@@ -3,15 +3,15 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: string;
-  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage: string | null;
 }
 
 const InputFile = ({
   label,
   name,
-  value,
   required = true,
+  onChange,
   errorMessage,
 }: Props) => {
   return (
@@ -23,9 +23,9 @@ const InputFile = ({
             type="file"
             name={name}
             id={name}
-            value={value}
             required={required}
             className="hidden"
+            onChange={onChange}
           />
           <div className="grid text-center gap-y-3">
             <img
@@ -39,7 +39,11 @@ const InputFile = ({
           </div>
         </div>
       </label>
-      <span className="inline-flex items-center gap-x-2 text-sm sm:text-base">
+      <span
+        className={`${
+          errorMessage ? "text-orange-700" : ""
+        } inline-flex items-center gap-x-2 text-sm sm:text-base`}
+      >
         <AiOutlineInfoCircle />
         {errorMessage
           ? errorMessage

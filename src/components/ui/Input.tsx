@@ -5,7 +5,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: () => void;
   errorMessage: string | null;
 }
 

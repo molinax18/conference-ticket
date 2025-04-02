@@ -1,22 +1,26 @@
 import { useForm } from "../hooks/useForm";
 import { ITicketForm } from "../models/ticketForm.interface";
-import { validateInputByRegex } from "../util/inputValidations";
+import { validateInputByRegex, validateInputFile } from "../utils/inputValidations";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import InputFile from "./ui/InputFile";
 
 const initialForm: ITicketForm = {
-  avatar: "",
+  avatar: null,
   name: "",
   email: "",
   github: "",
 };
 
 const validateTicketForm = (form: ITicketForm) => {
-  const errors: Partial<ITicketForm> = {};
+  const errors: Partial<Record<keyof ITicketForm, string>> = {};
   const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
   const regexGithub = /^@(?!-)[a-zA-Z0-9-]{1,38}(?<!-)$/;
+
+  if (!validateInputFile(form.avatar)) {
+    errors.avatar = "Enter a file";
+  }
 
   if (!validateInputByRegex(form.name, regexName)) {
     errors.name = "Enter a valid name";
@@ -42,8 +46,8 @@ const TicketForm = () => {
       <InputFile
         label="Upload Avatar"
         name="avatar"
-        value={form.avatar}
         errorMessage={errors.avatar || null}
+        onChange={handleInputChange}
       />
       
       <Input
