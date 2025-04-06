@@ -20,7 +20,7 @@ export const useForm = <T>(
 
   const handleInputBlur = () => setErrors(validateForm(form));
 
-  const onSubmit = () => null;
+  const resetForm = () => setForm(initialForm);
 
-  return { form, errors, handleInputChange, handleInputBlur, onSubmit };
+  return { form, errors, handleInputChange, handleInputBlur, resetForm };
 };

@@ -26,6 +26,7 @@ const InputFile = ({
             required={required}
             className="hidden"
             onChange={onChange}
+            accept=".png, .jpg, .jpeg"
           />
           <div className="grid text-center gap-y-3">
             <img

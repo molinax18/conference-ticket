@@ -1,9 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
 import { useForm } from "../hooks/useForm";
 import { ITicketForm } from "../models/ticketForm.interface";
-import { validateInputByRegex, validateInputFile } from "../utils/inputValidations";
+import { validateTicketForm } from "../utils/forms/validateTicketForm";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import InputFile from "./ui/InputFile";
+import { TicketData } from "../models/ticketData.interface";
 
 const initialForm: ITicketForm = {
   avatar: null,
@@ -12,34 +14,23 @@ const initialForm: ITicketForm = {
   github: "",
 };
 
-const validateTicketForm = (form: ITicketForm) => {
-  const errors: Partial<Record<keyof ITicketForm, string>> = {};
-  const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-  const regexGithub = /^@(?!-)[a-zA-Z0-9-]{1,38}(?<!-)$/;
-
-  if (!validateInputFile(form.avatar)) {
-    errors.avatar = "Enter a file";
-  }
-
-  if (!validateInputByRegex(form.name, regexName)) {
-    errors.name = "Enter a valid name";
-  }
-
-  if (!validateInputByRegex(form.email, regexEmail)) {
-    errors.email = "Enter a valid email";
-  }
-
-  if (!validateInputByRegex(form.github, regexGithub)) {
-    errors.github = "Enter a valid user";
-  }
-
-  return errors;
+type Props = {
+  setTicketData: Dispatch<SetStateAction<TicketData | null>>;
 };
 
-const TicketForm = () => {
-  const { form, errors, handleInputChange, handleInputBlur, onSubmit } =
+const TicketForm = ({ setTicketData }: Props) => {
+  const { form, errors, handleInputChange, handleInputBlur, resetForm } =
     useForm<ITicketForm>(initialForm, validateTicketForm);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleInputBlur();
+
+    if (Object.keys(errors).length === 0) {
+      setTicketData({...form, avatar: form.avatar![0]});
+      resetForm();
+    }
+  };
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-y-6 w-full max-w-xl">
@@ -49,7 +40,7 @@ const TicketForm = () => {
         errorMessage={errors.avatar || null}
         onChange={handleInputChange}
       />
-      
+
       <Input
         label="Full Name"
         name="name"
@@ -57,7 +48,7 @@ const TicketForm = () => {
         placeholder="John Doe"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        errorMessage={errors.name || null}
+        errorMessage={errors.name || null}  
       />
 
       <Input

@@ -1,8 +1,27 @@
+import { useState } from "react";
+import { TicketData } from "./models/ticketData.interface";
 import Background from "./components/Background";
-import TicketForm from "./components/TicketForm";
 import Header from "./components/Header";
+import TicketForm from "./components/TicketForm";
 
 const App = () => {
+  const [ticketData, setTicketData] = useState<TicketData | null>(null);
+
+  if (ticketData) {
+    const { name, email, github, avatar } = ticketData;
+
+    return (
+      <>
+        <Background />
+
+        <h1>{name}</h1>
+        <p>{email}</p>
+        <img src={URL.createObjectURL(avatar)} alt={avatar.name} />
+        <p>{github}</p>
+      </>
+    );
+  }
+
   return (
     <>
       <Background />
@@ -20,7 +39,7 @@ const App = () => {
 
         <main>
           <section className="place-content-center justify-items-center">
-            <TicketForm />
+            <TicketForm setTicketData={setTicketData} />
           </section>
         </main>
       </div>
