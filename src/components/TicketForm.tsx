@@ -48,7 +48,7 @@ const TicketForm = ({ setTicketData }: Props) => {
         placeholder="John Doe"
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        errorMessage={errors.name || null}  
+        errorMessage={errors.name || null}
       />
 
       <Input
