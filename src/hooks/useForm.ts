@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validateInputFile } from "../utils/inputValidations";
 
 export const useForm = <T>(
   initialForm: T,
@@ -7,14 +8,18 @@ export const useForm = <T>(
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
 
+  const handleInputFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    const updatedForm = { ...form, [name]: files };
+    
+    if (validateInputFile(files)) setForm(updatedForm);
+    
+    setErrors(validateForm(updatedForm));
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, files } = e.target;
-    
-    if (files && files[0]) {
-      setForm((prev) => ({ ...prev, [name]: files}));
-      return;
-    }
-    
+    const { name, value } = e.target;
+
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -22,5 +27,12 @@ export const useForm = <T>(
 
   const resetForm = () => setForm(initialForm);
 
-  return { form, errors, handleInputChange, handleInputBlur, resetForm };
+  return {
+    form,
+    errors,
+    handleInputChange,
+    resetForm,
+    handleInputFileChange,
+    handleInputBlur,
+  };
 };

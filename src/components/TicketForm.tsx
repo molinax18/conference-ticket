@@ -2,10 +2,10 @@ import { Dispatch, SetStateAction } from "react";
 import { useForm } from "../hooks/useForm";
 import { ITicketForm } from "../models/ticketForm.interface";
 import { validateTicketForm } from "../utils/forms/validateTicketForm";
+import { TicketData } from "../models/ticketData.interface";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import InputFile from "./ui/InputFile";
-import { TicketData } from "../models/ticketData.interface";
 
 const initialForm: ITicketForm = {
   avatar: null,
@@ -19,12 +19,11 @@ type Props = {
 };
 
 const TicketForm = ({ setTicketData }: Props) => {
-  const { form, errors, handleInputChange, handleInputBlur, resetForm } =
+  const { form, errors, handleInputChange, resetForm, handleInputFileChange, handleInputBlur } =
     useForm<ITicketForm>(initialForm, validateTicketForm);
-
+  
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    handleInputBlur();
 
     if (Object.keys(errors).length === 0) {
       setTicketData({...form, avatar: form.avatar![0]});
@@ -38,7 +37,8 @@ const TicketForm = ({ setTicketData }: Props) => {
         label="Upload Avatar"
         name="avatar"
         errorMessage={errors.avatar || null}
-        onChange={handleInputChange}
+        onChange={handleInputFileChange}
+        prevImage={form.avatar}
       />
 
       <Input

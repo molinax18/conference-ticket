@@ -5,6 +5,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage: string | null;
+  prevImage: FileList | null;
 }
 
 const InputFile = ({
@@ -13,6 +14,7 @@ const InputFile = ({
   required = true,
   onChange,
   errorMessage,
+  prevImage,
 }: Props) => {
   return (
     <fieldset className="grid gap-y-2">
@@ -29,14 +31,29 @@ const InputFile = ({
             accept=".png, .jpg, .jpeg"
           />
           <div className="grid text-center gap-y-3">
-            <img
-              src="/icon-upload.svg"
-              alt="Upload icon"
-              className="mx-auto bg-gray-500/20 border-[1px] border-neutral-700 rounded-xl p-4"
-            />
-            <span className="text-neutral-500">
-              Drag and drop or click to upload
-            </span>
+            {prevImage && errorMessage === null ? (
+              <>
+                <img
+                  src={URL.createObjectURL(prevImage[0])}
+                  alt="Avatar"
+                  className="size-24 mx-auto bg-gray-500/20 border-[3px] border-neutral-700 rounded-2xl"
+                />
+
+                <button>Remove image</button>
+                <button>Change Image</button>
+              </>
+            ) : (
+              <>
+                <img
+                  src="/icon-upload.svg"
+                  alt="Upload icon"
+                  className="mx-auto bg-gray-500/20 border-[1px] border-neutral-700 rounded-xl p-4"
+                />
+                <span className="text-neutral-500">
+                  Drag and drop or click to upload
+                </span>
+              </>
+            )}
           </div>
         </div>
       </label>
