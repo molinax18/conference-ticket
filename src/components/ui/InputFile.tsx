@@ -38,9 +38,6 @@ const InputFile = ({
                   alt="Avatar"
                   className="size-24 mx-auto bg-gray-500/20 border-[3px] border-neutral-700 rounded-2xl"
                 />
-
-                <button>Remove image</button>
-                <button>Change Image</button>
               </>
             ) : (
               <>

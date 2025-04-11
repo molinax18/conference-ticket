@@ -11,9 +11,9 @@ export const useForm = <T>(
   const handleInputFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, files } = e.target;
     const updatedForm = { ...form, [name]: files };
-    
+
     if (validateInputFile(files)) setForm(updatedForm);
-    
+
     setErrors(validateForm(updatedForm));
   };
 
