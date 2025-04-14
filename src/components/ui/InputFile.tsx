@@ -36,7 +36,7 @@ const InputFile = ({
                 <img
                   src={URL.createObjectURL(prevImage[0])}
                   alt="Avatar"
-                  className="size-24 mx-auto bg-gray-500/20 border-[3px] border-neutral-700 rounded-2xl"
+                  className="size-24 mx-auto bg-gray-500/20 border-[3px] border-neutral-700 rounded-2xl object-cover"
                 />
               </>
             ) : (

@@ -11,22 +11,29 @@ const TicketInfo = ({ data }: Props) => {
 
   return (
     <section>
-      <Header>
-        <h1>
-          Congrats, <span>{name}</span>! Your ticket is ready.
-        </h1>
+      <div className="w-full max-w-3xl mx-auto grid grid-rows-[min-content_1fr] min-h-dvh px-4 py-10 gap-y-12 text-neutral-300">
+        <Header>
+          <h1 className="text-neutral-0 text-4xl font-bold text-center">
+            Congrats,{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-neutral-0 bg-clip-text text-transparent">
+              {name}
+            </span>
+            ! Your ticket is ready.
+          </h1>
 
-        <p>
-          We've emailed your ticket to <span>{email}</span> and will send
-          updates in the run up to the event.
-        </p>
-      </Header>
+          <p className="text-neutral-300 text-center">
+            We've emailed your ticket to{" "}
+            <span className="text-orange-500">{email}</span> and will send
+            updates in the run up to the event.
+          </p>
+        </Header>
 
-      <Ticket
-        name={name}
-        github={github}
-        avatar={URL.createObjectURL(avatar)}
-      />
+        <Ticket
+          name={name}
+          github={github}
+          avatar={URL.createObjectURL(avatar)}
+        />
+      </div>
     </section>
   );
 };
