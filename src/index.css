@@ -21,6 +21,9 @@
   /* Sizes */
   --text-title-size: clamp(1.8rem, 1.6239rem + 0.7512vw, 2.3rem);
   --text-subtitle-size: clamp(1rem, 0.9296rem + 0.3005vw, 1.2rem); 
+
+  /* Breakpoints */
+  --breakpoint-xs: 540px;
 }
 
 @layer base {  
